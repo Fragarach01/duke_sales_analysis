@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: target_db
+    description: "Raw data from the target PostgreSQL database."
+    database: target_db
+    schema: public
+    tables:
+      - name: transactions
+        description: "List of transactions"

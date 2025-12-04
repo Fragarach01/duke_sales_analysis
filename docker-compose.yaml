@@ -74,7 +74,35 @@ services:
         read_only: false
     
 
-  
+  dbt: 
+    image: ghcr.io/dbt-labs/dbt-postgres:latest
+    # Use the official dbt image for PostgreSQL
+    command:
+      [
+        "run",
+        "--profiles-dir",
+        "/root",
+        "--project-dir",
+        "/dbt"
+      ]
+    networks:
+    # Define the network for the service
+      - duke_elt_network
+    volumes:
+      # Map the local dbt project directory to the container's /dbt directory
+      - ./duke_elt_project:/dbt 
+      # Map the local profiles.yml to the container's /usr/app/ directory
+      - ~/.dbt:/root #./elt_project/profiles.yml:/usr/app/profiles.yml
+    depends_on:
+      # Ensure target_postgres is ready before running dbt
+      - elt_script
+    environment:
+      DBT_PROFILE: duke_elt_project
+      DBT_TARGET: dev
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
 volumes:
   # Define any named volumes here if needed in the future
   db_data:
@@ -83,17 +111,6 @@ volumes:
       type: none
       device: /Users/davidcleary/Data_Science/duke_elt_project/db_data
       o: bind
-  #source_db_init:
-  #  driver: local
-  #  driver_opts:
-  #    type: none
-  #    device: /Users/davidcleary/Data_Science/duke_elt_project/source_db_init
-  #    o: bind
-
-
-
- # ./elt/data_dump.sql:
-
 
 
 
@@ -102,7 +119,3 @@ networks:
     # Define the network for the services
     driver: bridge
 
-
-#- type: volume
-#        source: source_db_init
-#        target: /docker-entrypoint-initdb.d/
