@@ -3,7 +3,10 @@
 select 
     date::DATE,
     time::TIME,
-    account_id::NUMERIC, 
+    CASE 
+        WHEN account_id IN ('""', NULL) THEN 0 
+        ELSE account_id::NUMERIC 
+    END AS account_id,
     terminal,
     type, 
     description, 
