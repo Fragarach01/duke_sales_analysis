@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y postgresql \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
+# RUN apt-get update && apt-get install -y psycopg2-binary \ 
+#    sqlalchemy \
+#    && rm -rf /var/lib/apt/lists/*
+
 #COPY ./requirements.txt .
 COPY elt_script.py .
 

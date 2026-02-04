@@ -26,7 +26,7 @@ services:
       - ./source_db_init/init.sql:/docker-entrypoint-initdb.d/init.sql
       - type: bind
         source: db_data
-        target: /sales_data
+        target: /var/lib/postgresql/sales_data
         read_only: false
 
 
