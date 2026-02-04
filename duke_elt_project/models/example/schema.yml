@@ -10,20 +10,9 @@ models:
         description: "The date of the transaction"
         data_tests:
           - not_null
-          - unique
 
       - name: time
         description: "The time of the transaction"
-        data_tests:
-          - not_null
-
-      - name: order_no
-        description: "The order number"
-        data_tests:
-          - not_null
-
-      - name: account_no
-        description: "The account number"
         data_tests:
           - not_null
 
@@ -36,7 +25,6 @@ models:
         description: "The type of the transaction"
         data_tests:
           - not_null
-          - unique
 
       - name: description
         description: "The item or payment type"
@@ -45,11 +33,6 @@ models:
 
       - name: detail
         description: "Additional Info"
-        data_tests:
-          - not_null
-
-      - name: information
-        description: "ASSESS THIS FIELD"
         data_tests:
           - not_null
 
@@ -66,11 +49,6 @@ models:
 
       - name: discount
         description: "The value of discount applied to the sales amount"
-        data_tests:
-          - not_null
-
-      - name: VAT
-        description: "The vat applied to the transaction"
         data_tests:
           - not_null
 

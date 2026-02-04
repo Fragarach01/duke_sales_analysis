@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: source_db
-    description: "Raw data from the target PostgreSQL database."
+    description: "Raw data from the PostgreSQL database."
     database: source_db
     schema: public
     tables:

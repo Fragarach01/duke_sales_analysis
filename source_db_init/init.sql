@@ -31,5 +31,5 @@ CREATE TABLE IF NOT EXISTS transactions (
 );
 
 CREATE TABLE IF NOT EXISTS loaded_files (filename TEXT PRIMARY KEY);
---COPY transactions FROM '/sales_data/transactions_11-24.csv' PROGRAM 'cat *.csv' WITH (FORMAT csv, HEADER true, LOG_VERBOSITY verbose);
+
 

@@ -38,9 +38,9 @@ if not wait_for_postgres(host="source_postgres"):
     exit(1)  # Exit if Postgres is not ready
 
 # Check if target Postgres is ready
-if not wait_for_postgres(host="target_postgres"):
+""" if not wait_for_postgres(host="target_postgres"):
     raise RuntimeError("Target postgres DB is not ready, exiting script.")
-    exit(1)  # Exit if Postgres is not ready
+    exit(1)  """ # Exit if Postgres is not ready
 
 
 # Run the ELT script

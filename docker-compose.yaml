@@ -30,21 +30,21 @@ services:
         read_only: false
 
 
-  target_postgres:
+#  target_postgres:
     # Service for the target PostgreSQL database
-    image: postgres:17.6
+#    image: postgres:17.6
     # Use the official PostgreSQL image
-    networks:
+#    networks:
       # Define the network for the service
-      - duke_elt_network
-    environment:
+#      - duke_elt_network
+#    environment:
       # Environment variables for PostgreSQL
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: target_db
-    ports:
+#      POSTGRES_USER: postgres
+ #     POSTGRES_PASSWORD: secret
+ #     POSTGRES_DB: target_db
+ #   ports:
       # Expose the PostgreSQL port
-      - "5436:5432"
+#      - "5436:5432"
     # Don't need to initialize target volume until we know elt script works
     #volumes:
       # Map the local directory to the container's init directory
@@ -66,7 +66,7 @@ services:
       # Ensure source_postgres is ready before running the script
       # This container won't start until dependencies are finished building
       - source_postgres
-      - target_postgres
+#      - target_postgres
     volumes:
       - type: bind
         source: db_data
