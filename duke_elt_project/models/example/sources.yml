@@ -1,9 +1,9 @@
 version: 2
 
 sources:
-  - name: target_db
+  - name: source_db
     description: "Raw data from the target PostgreSQL database."
-    database: target_db
+    database: source_db
     schema: public
     tables:
       - name: transactions
